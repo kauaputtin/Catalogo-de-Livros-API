@@ -1,0 +1,39 @@
+Listar livros - esperado 200 OK
+curl.exe -i http://127.0.0.1:3001/api/books
+
+Consultar livro 1 - esperado 200 OK
+curl.exe -i http://127.0.0.1:3001/api/books/1
+
+Livro inexistente - esperado 404 Not Found
+curl.exe -i http://127.0.0.1:3001/api/books/999
+
+ID invalido - esperado 400 Bad Request
+curl.exe -i http://127.0.0.1:3001/api/books/abc
+
+Criar livro - esperado 201 Created
+curl.exe -i -X POST -H "Content-Type: application/json" -d '{"title":"O Cortico","author":"Aluisio
+Azevedo","year":1890,"available":true}' http://127.0.0.1:3001/api/books
+
+Atualizar livro 1 - esperado 200 OK
+curl.exe -i -X PUT -H "Content-Type: application/json" -d '{"title":"Dom Casmurro","author":"Machado de
+Assis","year":1899,"available":false}' http://127.0.0.1:3001/api/books/1
+
+Remover livro 2 - esperado 204 No Content
+curl.exe -i -X DELETE http://127.0.0.1:3001/api/books/2
+
+JSON invalido - esperado 400 Bad Request
+curl.exe -i -X POST -H "Content-Type: application/json" -d '{"title":' http://127.0.0.1:3001/api/books
+
+Campo obrigatorio ausente - esperado 400
+curl.exe -i -X POST -H "Content-Type: application/json" -d '{"title":"Livro X","author":"Autor
+X","year":2020}' http://127.0.0.1:3001/api/books
+
+PUT em livro inexistente - esperado 404
+curl.exe -i -X PUT -H "Content-Type: application/json" -d '{"title":"Livro X","author":"Autor
+X","year":2020,"available":true}' http://127.0.0.1:3001/api/books/999
+
+DELETE em livro inexistente - esperado 404
+curl.exe -i -X DELETE http://127.0.0.1:3001/api/books/999
+
+Rota inexistente - esperado 404
+curl.exe -i http://127.0.0.1:3001/usuarios

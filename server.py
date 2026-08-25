@@ -5,9 +5,6 @@ import json
 HOST = "127.0.0.1"
 PORTA = 8000
 
-#lista armazenamento dos livros da api
-#[] lista
-#{} dicionario
 BOOKS = [
     {
         "id": 1,
@@ -25,16 +22,6 @@ BOOKS = [
     }
 ]
 
-#O BaseHTTPRequestHandler recebe a requisição HTTP e 
-#chama automaticamente um método Python correspondente.
-#exp:GET /api/books chama do_GET()
-
-#Uma API não se torna RESTful simplesmente porque possui operações de criação,
-#leitura, atualização e remoção de dados.
-#CRUD descreve operações comuns sobre dados. REST descreve um estilo
-#arquitetônico baseado em restrições sobre a interação entre componentes.
-#Uma aplicação pode implementar operações CRUD utilizando HTTP sem
-#necessariamente atender a todas as restrições de REST.
 class RestHTTPRequestHandler(BaseHTTPRequestHandler):
     def _send_json(self, status, data=None, headers=None):
         body = b""

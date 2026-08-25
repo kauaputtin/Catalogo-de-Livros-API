@@ -170,8 +170,8 @@ class RestHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_PUT(self):
         path = self._get_path()
 
-        if not path.startwith("/api/books/"):
-            self._send_json(404, {"erro: Rota nao encontrada."})
+        if not path.startswith("/api/books/"):
+            self._send_json(404, {"erro": "Rota nao encontrada."})
             return
 
         book_id_text = path.split("/")[-1]
